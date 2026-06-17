@@ -1,8 +1,11 @@
 Study-Assistant-Agent
 │
 ├── README.md
+
 ├── requirements.txt
+
 ├── LICENSE (optional)
+
 │
 ├── src/
 │   ├── main.py
