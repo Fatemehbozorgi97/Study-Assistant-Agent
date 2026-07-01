@@ -1,0 +1,15 @@
+{
+  "id": "7487a50d-44d7-4c01-995c-853ffea6bf6b",
+  "title": "shorter",
+  "messages": [
+    {
+      "role": "user",
+      "content": "shorter"
+    },
+    {
+      "role": "assistant",
+      "content": "Here is a shorter summary of the key points in the machine learning algorithms table:\n\n1. Linear Regression - Simple, analytic solution for linear relationships. Used in econometrics and baselines. Complexity: normal equations.\n\n2. Logistic Regression - Probabilistic, convex loss. Creates linear boundary for binary classification. Used in medical stats, finance. Complexity: per gradient descent iteration. \n\n3. k-Nearest Neighbors (k-NN) - No training needed. Places new points based on k closest examples. Good for small-scale lookup. Complexity: train time per query.\n\n4. Decision Trees - Interpretable, can handle mixed data types. Splits data by feature thresholds. High variance - prone to overfitting. Complexity: per prediction.\n\n5. Random Forest - Very accurate ensemble of many decision trees. Robust to overfitting, shows feature importance. Complexity: large model size, memory usage. Used in banking, sensor data.\n\n6. Boosted Trees - Extremely accurate by combining many weak learners. Shows feature importance. Requires complex hyperparameter tuning. Complexity: used in Kaggle competitions, tabular data.\n\n7. Support Vector Machines (SVM) - Effective for high-dimensional data, kernel trick. Slows down for large n and has many hyperparameters. Complexity: used for text/image classification. \n\n8. Gaussian Processes - Nonparametric Bayesian model that places prior on functions. Estimates uncertainty in predictions. Complexity: O(n^3). Used in scientific modeling.\n\nLet me know if you need any clarification or have additional questions!"
+    }
+  ],
+  "student_memory": {}
+}

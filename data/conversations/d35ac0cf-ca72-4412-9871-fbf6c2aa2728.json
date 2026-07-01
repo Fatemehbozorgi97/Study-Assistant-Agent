@@ -1,0 +1,23 @@
+{
+  "id": "d35ac0cf-ca72-4412-9871-fbf6c2aa2728",
+  "title": "what is the name of the course?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is the name of the course?"
+    },
+    {
+      "role": "assistant",
+      "content": "Based on the context provided, it seems the course is called \"AML Adv Feedback\". The full name given is \"Material: Virtuale/CourseAMLAdv2526\". However, the topic or subject of the course is Advanced Machine Learning (AML) and it relates to feedback on AML."
+    },
+    {
+      "role": "user",
+      "content": "who is the instructore?"
+    },
+    {
+      "role": "assistant",
+      "content": "Based on the context provided, the instructor for the course \"Material: Virtuale/CourseAMLAdv2526\" is Luca Clissa from the University of Bologna."
+    }
+  ],
+  "student_memory": {}
+}

@@ -1,0 +1,15 @@
+{
+  "id": "6ba135ad-dcb3-4907-8fb2-6989a4d83d58",
+  "title": "hello",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! How can I assist you with the course on Applied Machine Learning? Let me know if you have any questions about the professors, course topics, or lecture material. I'm here to help!"
+    }
+  ],
+  "student_memory": {}
+}

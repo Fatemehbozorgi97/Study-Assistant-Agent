@@ -1,0 +1,19 @@
+{"id": "l1-1", "question": "What is the bias-variance tradeoff?", "expected_mode": "explain", "expected_lectures": [1], "keywords": ["bias", "variance"]}
+{"id": "l1-2", "question": "Explain logistic regression.", "expected_mode": "explain", "expected_lectures": [1], "keywords": ["logistic"]}
+{"id": "l1-3", "question": "Give me a quiz on linear regression.", "expected_mode": "quiz", "expected_lectures": [1], "keywords": []}
+{"id": "l2-1", "question": "How does forward propagation work in a neural network?", "expected_mode": "explain", "expected_lectures": [2], "keywords": ["forward"]}
+{"id": "l2-2", "question": "Summarize lecture 2 on neural network representations.", "expected_mode": "summarize", "expected_lectures": [2], "keywords": []}
+{"id": "l3-1", "question": "Explain backpropagation in an MLP.", "expected_mode": "explain", "expected_lectures": [3], "keywords": ["backpropagation"]}
+{"id": "l3-2", "question": "What is gradient descent used for?", "expected_mode": "explain", "expected_lectures": [3], "keywords": ["gradient"]}
+{"id": "l3-3", "question": "Quiz me on gradient descent.", "expected_mode": "quiz", "expected_lectures": [3], "keywords": []}
+{"id": "l4-1", "question": "What does a convolution operation do in a CNN?", "expected_mode": "explain", "expected_lectures": [4], "keywords": ["convolution"]}
+{"id": "l4-2", "question": "Explain pooling layers and feature maps in CNNs.", "expected_mode": "explain", "expected_lectures": [4], "keywords": ["pooling"]}
+{"id": "l6-1", "question": "How does an LSTM handle sequence modeling?", "expected_mode": "explain", "expected_lectures": [6], "keywords": ["lstm"]}
+{"id": "l6-2", "question": "Summarize the RNN lecture.", "expected_mode": "summarize", "expected_lectures": [6], "keywords": []}
+{"id": "oos-1", "question": "Explain how the attention mechanism in transformers works.", "expected_mode": "explain", "expected_lectures": [], "keywords": [], "out_of_scope": true}
+{"id": "oos-2", "question": "What is a support vector machine and how does the kernel trick work?", "expected_mode": "explain", "expected_lectures": [], "keywords": [], "out_of_scope": true}
+{"id": "oos-3", "question": "Explain how reinforcement learning with Q-learning works.", "expected_mode": "explain", "expected_lectures": [], "keywords": [], "out_of_scope": true}
+{"id": "oos-4", "question": "What did the professor say about the final exam date?", "expected_mode": "course_info", "expected_lectures": [], "keywords": [], "out_of_scope": true}
+{"id": "greet-1", "question": "Hey, how's it going?", "expected_mode": "greeting", "expected_lectures": [], "keywords": []}
+{"id": "course-1", "question": "What is this course about?", "expected_mode": "course_info", "expected_lectures": [], "keywords": ["applied machine learning", "bologna"]}
+{"id": "course-2", "question": "How many credits is this course worth and who teaches it?", "expected_mode": "course_info", "expected_lectures": [], "keywords": ["10", "bonacorsi"]}

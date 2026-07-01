@@ -1,0 +1,2560 @@
+
+Lecture 3 — MLPs, Training, Tensors, Gradient Descent & Backpropagation
+MLP for Regression
+
+MLPs can be used for regression tasks.
+The number of output neurons depends on the prediction problem:
+
+Univariate regression → 1 output neuron
+Multivariate regression → multiple output neurons
+
+Typical examples:
+
+House price prediction
+Coordinate prediction
+Continuous value estimation
+
+Output activation choices:
+
+No activation → unrestricted outputs
+ReLU / Softplus → positive-only outputs
+Logistic / Tanh → bounded outputs
+
+Loss functions:
+
+MSE
+MAE
+Huber loss
+
+An MLP (Multi-Layer Perceptron) for regression is a standard neural network setup used when the goal is to predict continuous values instead of classes.
+
+What an MLP is doing in regression
+
+An MLP is a stack of fully connected layers that learns a mapping:
+
+input features→continuous output(s)
+
+It transforms inputs through hidden layers using nonlinear activations, and then produces a numeric prediction at the end.
+
+This is widely used in Machine Learning for tasks like prediction and function approximation.
+
+Output layer design (very important)
+
+The output layer depends on what you are predicting:
+
+1. Univariate regression
+Predict one value
+Example: house price, temperature
+
+👉 Output layer:
+
+1 neuron
+2. Multivariate regression
+Predict multiple values at once
+Example: (x, y, z) coordinates, multi-property prediction
+
+👉 Output layer:
+
+n neurons, one per target variable
+Output activation choices
+
+Unlike classification, regression outputs are continuous, so activation choice matters:
+
+1. No activation (linear output)
+Most common choice
+Output can be any real number
+
+✔ Best for:
+
+house prices
+general continuous values
+2. ReLU / Softplus (positive-only outputs)
+Ensures outputs are ≥ 0
+
+✔ Useful when:
+
+predicting counts
+prices (sometimes)
+physical quantities that cannot be negative
+
+Softplus is smoother:
+
+softplus(x)=log(1+e
+x
+)
+3. Sigmoid / Tanh (bounded outputs)
+Sigmoid → (0, 1)
+Tanh → (-1, 1)
+
+✔ Useful when:
+
+output is normalized
+predicting probabilities or scaled values
+Loss functions for regression
+
+The model learns by minimizing error between prediction and true value:
+
+1. MSE (Mean Squared Error)
+Penalizes large errors more strongly
+Most commonly used
+2. MAE (Mean Absolute Error)
+More robust to outliers
+Linear penalty on error
+3. Huber loss
+Combination of MSE and MAE
+Smooth for small errors, robust for large ones
+Intuition summary
+
+An MLP for regression:
+
+Takes inputs (features)
+Learns nonlinear relationships via hidden layers
+Outputs continuous value(s)
+Is trained by minimizing a regression loss
+
+
+Regression MLP Architecture
+
+Typical hyperparameters:
+
+Hidden layers: usually 1–5
+Hidden neurons: typically 10–100
+Hidden activation: ReLU or SELU
+Output activation depends on constraints
+Loss:
+MSE
+MAE
+Huber
+MLP for Classification
+
+Classification setups:
+
+Binary Classification
+One output neuron
+Logistic activation
+Multi-label Classification
+One output neuron per label
+Logistic activation
+Multiclass Classification
+One neuron per class
+Softmax activation
+
+Loss:
+
+Cross entropy / log loss
+
+🧠 1. Regression MLP Architecture
+
+A regression MLP predicts continuous values, so its architecture is designed for smooth numeric outputs.
+
+🏗️ Typical architecture choices
+🔹 Hidden layers (depth)
+Usually 1 to 5 layers
+Why not deeper?
+Most tabular regression problems don’t need very deep networks
+Overfitting becomes a risk
+🔹 Hidden neurons (width)
+Typically 10 to 100 neurons per layer
+Tradeoff:
+too small → underfitting
+too large → overfitting
+🔹 Hidden activations
+
+Most common:
+
+ReLU
+fast, stable, widely used
+SELU
+self-normalizing properties (useful in deeper nets)
+
+👉 These activations introduce non-linearity so the model can learn complex patterns.
+
+🔹 Output layer
+
+Depends on constraints:
+
+No activation (linear) → default for most regression
+ReLU / Softplus → if output must be positive
+Sigmoid / Tanh → if output is bounded
+📉 Loss functions (regression)
+
+These measure how wrong the prediction is:
+
+🔸 MSE (Mean Squared Error)
+Most common
+Penalizes large errors heavily
+🔸 MAE (Mean Absolute Error)
+More robust to outliers
+Treats all errors linearly
+🔸 Huber loss
+Mix of MSE + MAE
+Stable and robust (very popular in practice)
+🧠 2. MLP for Classification
+
+Now the goal changes:
+👉 instead of predicting a number → predict a class or label
+
+🟦 Binary classification
+
+Example:
+
+spam vs not spam
+disease vs no disease
+Architecture:
+1 output neuron
+Sigmoid activation
+P(y=1)=σ(x)
+Output meaning:
+value close to 0 → class 0
+value close to 1 → class 1
+Loss:
+Binary cross-entropy (log loss)
+🟨 Multi-label classification
+
+Example:
+
+image can contain: dog, car, tree (all at once)
+Architecture:
+1 neuron per label
+Each neuron predicts independently
+Activation:
+Sigmoid on each output
+
+Why sigmoid?
+
+Each label is independent (not mutually exclusive)
+Loss:
+Binary cross-entropy applied per label
+🟩 Multiclass classification
+
+Example:
+
+digit recognition (0–9)
+image belongs to exactly one class
+Architecture:
+1 neuron per class
+Activation:
+Softmax
+
+Softmax ensures:
+
+i
+∑
+	​
+
+p
+i
+	​
+
+=1
+
+So outputs become a probability distribution.
+
+Loss:
+Cross-entropy loss (categorical log loss)
+⚖️ Key difference summary
+Problem type	Output layer	Activation	Loss
+Regression	1 or more neurons	Linear / ReLU / etc.	MSE / MAE / Huber
+Binary classification	1 neuron	Sigmoid	Binary cross-entropy
+Multi-label	n neurons	Sigmoid	Binary cross-entropy
+Multiclass	n neurons	Softmax	Cross-entropy
+🧠 Intuition (important)
+Regression → “How much?”
+Binary classification → “Yes or No?”
+Multiclass classification → “Which one?”
+Multi-label classification → “Which ones?”
+
+Neural Networks and Brain Inspiration
+
+Neural networks were historically inspired by the brain.
+
+The lectures discuss the hypothesis that:
+
+the brain may rely on a general learning algorithm
+different sensory systems might reuse similar learning principles
+
+Examples discussed:
+
+auditory cortex rewiring
+visual cortex adaptation
+neuroplasticity
+
+Main idea:
+Instead of writing thousands of specialized algorithms, maybe intelligence emerges from one adaptable learning mechanism.
+
+Training Neural Networks
+
+Training loop:
+
+Draw training batch
+Forward pass
+Compute loss
+Update weights
+
+Trainable parameters:
+
+weights W
+biases b
+
+Weights are initialized randomly.
+
+Training gradually adjusts them to minimize loss.
+🧠 1. Neural Networks & Brain Inspiration
+
+Early neural networks were inspired by the idea of the human brain, but in a simplified mathematical way.
+
+The brain belongs to the field of Neuroscience, and researchers noticed some interesting patterns:
+
+🧩 Key hypothesis: “One learning algorithm”
+
+A big idea from neuroscience and AI research is:
+
+The brain might not use many different algorithms for different tasks
+but instead uses a general learning mechanism everywhere.
+
+This is still a hypothesis, but it’s very influential in AI.
+
+🔄 Neuroplasticity (core concept)
+
+The brain is not fixed — it can rewire itself.
+
+This property is called:
+
+Neuroplasticity
+
+It means:
+
+brain regions can adapt based on experience
+learning changes physical connections
+👁️ Examples from sensory systems
+🔊 Auditory cortex rewiring
+
+If hearing is damaged early in life:
+
+the brain can partially reassign auditory regions to other functions
+👁️ Visual cortex adaptation
+
+If visual input changes or is absent:
+
+parts of the visual cortex can be repurposed
+💡 Main idea from neuroscience → AI
+
+Instead of designing:
+
+one algorithm for vision
+another for speech
+another for language
+
+We try to build:
+
+one flexible learning system that adapts to many tasks
+
+That’s the motivation behind neural networks and deep learning.
+
+🧠 2. Training Neural Networks
+
+Now we move from biology inspiration → actual machine learning process.
+
+🔁 Training loop (core cycle)
+
+Training a neural network always follows this loop:
+
+1. Draw training batch
+Take a small subset of data (mini-batch)
+Not the whole dataset at once
+2. Forward pass
+Input goes through the network
+Produces predictions
+3. Compute loss
+Compare prediction vs true value
+Measure error
+4. Update weights
+Adjust parameters to reduce error
+Done using optimization (usually gradient descent)
+⚙️ What is being learned?
+
+The network learns two types of parameters:
+
+🔹 Weights (W)
+control strength of connections
+decide how much influence each input has
+🔹 Biases (b)
+shift outputs
+allow flexibility even when inputs are zero
+🎲 Initialization
+
+At the start:
+
+weights are randomly initialized
+
+Why?
+
+If all weights were equal → network would learn nothing useful
+randomness breaks symmetry
+📉 Learning process intuition
+
+Over time:
+
+random weights → bad predictions
+compute loss → measure error
+adjust weights → reduce error
+repeat thousands of times
+
+Eventually:
+
+the network “shapes itself” into a function that maps inputs → outputs well
+
+🧠 Big picture summary
+Brain inspiration
+intelligence may come from a single adaptable learning system
+supported by concepts like neuroplasticity
+brain regions can adapt and reuse computation
+Neural network training
+repeated loop:
+data → prediction → error → update
+learns by adjusting weights and biases
+starts random, becomes structured through optimization
+
+
+
+Gradient Descent (GD)
+
+Gradient Descent updates weights iteratively to minimize loss.
+
+Key idea:
+
+compute gradient
+move parameters opposite the gradient direction
+
+This reduces error over time.
+
+Variants:
+
+SGD
+SGD with momentum
+RMSProp
+Adagrad
+
+Momentum improves:
+
+convergence speed
+local minima handling
+
+📉 Gradient Descent (GD)
+
+Gradient Descent is an optimization method used to minimize the loss function of a neural network.
+
+In simple terms:
+
+It tells the model how to change its parameters so predictions become better.
+
+🧠 Core idea
+
+You have a loss function:
+
+high loss → bad model
+low loss → good model
+
+Gradient Descent answers:
+
+“In which direction should we change weights to reduce the loss fastest?”
+
+📌 Key idea (your note)
+✔ Compute gradient
+
+The gradient tells you:
+
+slope of the loss function
+direction of steepest increase
+✔ Move opposite the gradient
+
+So we do:
+
+move parameters in the direction that reduces loss
+
+Mathematically:
+
+W=W−η⋅∇L(W)
+
+Where:
+
+W = weights
+η = learning rate
+∇L(W) = gradient of loss
+🎯 Intuition
+
+Imagine you're on a mountain (loss landscape):
+
+height = loss
+goal = reach lowest point
+
+Gradient Descent:
+
+looks around
+finds steepest uphill direction
+steps downhill instead
+🔁 Why it is iterative
+
+You don’t reach the minimum in one step.
+
+Instead:
+
+compute gradient
+take a small step down
+recompute
+repeat many times
+
+This gradually improves the model.
+
+⚡ Variants of Gradient Descent
+
+Different versions exist to make learning faster and more stable.
+
+1. 🟦 SGD (Stochastic Gradient Descent)
+
+Instead of using the full dataset:
+
+uses one sample or small batch
+
+✔ Pros:
+
+fast updates
+works well for large datasets
+
+❌ Cons:
+
+noisy updates
+can bounce around
+2. 🟩 SGD + Momentum
+
+This improves SGD by adding “memory”.
+
+Idea:
+
+Instead of only using current gradient:
+
+also remember past updates
+
+Think of it like:
+
+a ball rolling downhill that gains speed
+
+Why it helps:
+
+✔ faster convergence
+✔ smoother updates
+✔ reduces zig-zag motion
+✔ helps escape shallow local minima
+
+3. 🟨 Adagrad
+
+Adapts learning rate per parameter:
+
+frequent updates → smaller steps
+rare updates → larger steps
+
+✔ Good for:
+
+sparse data (like NLP)
+
+❌ Problem:
+
+learning rate keeps shrinking too much over time
+4. 🟧 RMSProp
+
+Fixes Adagrad issue:
+
+uses moving average of squared gradients
+keeps learning rate stable
+
+✔ Very popular for:
+
+deep learning
+RNNs
+🧠 Big picture intuition
+
+All GD variants try to answer:
+
+“How do we move weights to reduce loss efficiently and stably?”
+
+Differences are mainly about:
+
+how much data we use
+how we scale learning rate
+whether we use memory of past gradients
+📊 Simple comparison
+Method	Key idea	Strength
+GD	full dataset	stable but slow
+SGD	one batch	fast but noisy
+Momentum	adds memory	smoother + faster
+Adagrad	adaptive learning rate	good for sparse data
+RMSProp	fixes Adagrad decay	stable deep learning
+🧠 Final intuition (important)
+
+Training neural networks is basically:
+
+start with random weights
+compute error (loss)
+compute slope (gradient)
+move weights downhill
+repeat
+
+👉 Gradient Descent is the rule that decides how to move
+
+
+
+
+Backpropagation (BP)
+
+Backpropagation computes gradients efficiently using the chain rule.
+
+Introduced in 1986 by:
+
+Rumelhart
+Hinton
+Williams
+
+BP:
+
+performs forward propagation
+computes loss
+propagates gradients backward
+updates weights through GD
+
+GD vs BP
+
+Lecture analogy:
+
+Gradient Descent:
+
+like a hiker walking downhill
+
+Backpropagation:
+
+computes the best direction to walk
+
+BP calculates gradients.
+GD uses gradients to update parameters.
+
+Both are required during training.
+🔁 Backpropagation (BP)
+
+Backpropagation is the method used to compute gradients efficiently in a neural network.
+
+It uses a key mathematical idea:
+
+the chain rule from calculus
+
+🧠 Main idea
+
+A neural network is a chain of functions:
+
+x→layer
+1
+	​
+
+→layer
+2
+	​
+
+→⋯→loss
+
+Backpropagation answers:
+
+“How does each weight contribute to the final error?”
+
+📜 Historical note
+
+Backpropagation became widely known in 1986 thanks to:
+
+David Rumelhart
+Geoffrey Hinton
+Ronald J. Williams
+
+Their work showed how multilayer neural networks can actually be trained efficiently.
+
+🔄 How Backpropagation works
+
+BP has 3 main steps:
+
+1. ▶ Forward propagation
+Input goes through the network
+Each layer computes outputs
+Final prediction is produced
+
+👉 Example:
+
+x→W
+1
+	​
+
+→W
+2
+	​
+
+→
+y
+^
+	​
+
+2. 📉 Compute loss
+
+Compare prediction with true label:
+
+regression → MSE / MAE
+classification → cross-entropy
+
+This gives a single number:
+
+“how wrong the model is”
+
+3. ⬅ Backward propagation
+
+Now comes the key part:
+
+We compute:
+
+how much each weight contributed to the error
+
+Using the chain rule, gradients flow backward:
+
+from loss
+through each layer
+down to every weight
+
+This gives:
+
+∂W
+∂L
+	​
+
+⚙️ Weight update (connects to Gradient Descent)
+
+Once gradients are computed:
+
+W=W−η⋅
+∂W
+∂L
+	​
+
+
+So:
+
+BP computes gradients
+GD uses them to update weights
+⚖️ Backpropagation vs Gradient Descent
+
+This is the key distinction:
+
+🧠 Backpropagation
+
+“How do we compute gradients efficiently?”
+
+uses chain rule
+flows error backward
+computes derivatives for all weights
+
+👉 Think:
+
+“analysis of how wrong each parameter is”
+
+📉 Gradient Descent
+
+“How do we use gradients to improve the model?”
+
+updates parameters
+takes a step downhill in loss space
+
+👉 Think:
+
+“actual movement of the model”
+
+🧩 Lecture analogy (expanded)
+🧗 Gradient Descent
+like a hiker walking downhill
+decides how to move
+🧭 Backpropagation
+like a GPS system
+
+tells you:
+
+“this is the best direction downhill”
+
+🔗 How they work together
+
+Training a neural network is always:
+
+1. Forward pass
+
+→ prediction
+
+2. Loss computation
+
+→ error
+
+3. Backpropagation
+
+→ compute gradients
+
+4. Gradient Descent
+
+→ update weights
+
+🧠 Key insight
+
+Without backpropagation:
+
+computing gradients would be extremely slow (exponential cost)
+
+With backpropagation:
+
+gradients are computed efficiently in linear time relative to network size
+
+👉 This is why deep learning is practical.
+
+📌 Final summary
+Backpropagation = computes gradients (using chain rule)
+Gradient Descent = uses gradients to update weights
+both are required for training neural networks
+
+
+
+Tensor Operations
+
+Neural networks are chains of tensor operations.
+
+Important operations:
+
+element-wise operations
+broadcasting
+dot products
+reshaping
+transposition
+
+Dot products combine tensor entries and are fundamental in Dense layers.
+
+Broadcasting automatically expands smaller tensors.
+
+Geometric Interpretation of Deep Learning
+
+Tensor operations can be interpreted geometrically.
+
+🧮 1. Tensor Operations in Neural Networks
+
+A neural network is basically:
+
+repeated transformations of tensors
+
+A tensor is just a generalization of:
+
+scalar (0D)
+vector (1D)
+matrix (2D)
+higher-dimensional arrays (3D+)
+🔁 Neural network viewpoint
+
+Each layer does something like:
+
+output=f(input tensors)
+
+So deep learning is really:
+
+a composition of tensor functions
+
+⚙️ 2. Important Tensor Operations
+📌 1. Element-wise operations
+
+Each element is processed independently:
+
+Example:
+
+z=x+yorz=ReLU(x)
+
+✔ Used in:
+
+activations (ReLU, sigmoid)
+adding bias
+masks
+
+👉 Intuition:
+
+“apply the same rule to every number”
+
+📌 2. Broadcasting
+
+Broadcasting allows operations between tensors of different shapes.
+
+Example:
+
+vector + scalar
+matrix + vector
+
+Instead of manually matching shapes, frameworks automatically “stretch” dimensions.
+
+👉 Intuition:
+
+“small tensor is copied logically to match larger one”
+
+✔ Example:
+
+[
+1
+3
+	​
+
+2
+4
+	​
+
+]+1⇒[
+2
+4
+	​
+
+3
+5
+	​
+
+]
+📌 3. Dot product (VERY important)
+
+This is the core of Dense (fully connected) layers.
+
+y=Wx+b
+
+Where:
+
+W = weight matrix
+x = input vector
+What it does:
+
+It combines features:
+
+y
+i
+	​
+
+=
+j
+∑
+	​
+
+W
+ij
+	​
+
+x
+j
+	​
+
+
+👉 Intuition:
+
+each neuron computes a weighted combination of inputs
+
+🧠 Why dot products matter
+
+They are the reason neural networks can:
+
+mix features
+learn patterns
+represent complex functions
+
+Without dot products → no learning capacity.
+
+📌 4. Reshaping
+
+Changes tensor shape without changing values.
+
+Example:
+
+(784,) → (28, 28)
+
+✔ Used for:
+
+image preprocessing
+flattening layers
+
+👉 Intuition:
+
+“same data, different view”
+
+📌 5. Transposition
+
+Swaps axes of a tensor.
+
+Example:
+
+matrix (rows ↔ columns)
+A
+T
+
+✔ Used in:
+
+matrix multiplication alignment
+attention mechanisms
+🔷 3. Broadcasting + Dot Product = Core of Deep Learning
+
+Most neural network computation is:
+
+(Wx+b)
+
+Which is:
+
+dot product → feature mixing
+broadcasting → adding bias
+🧠 4. Geometric Interpretation of Deep Learning
+
+This is a powerful conceptual view:
+
+Neural networks transform space step by step.
+
+📌 What this means
+
+Each layer:
+
+rotates
+stretches
+compresses
+warps the input space
+📊 Example intuition
+
+Imagine data points in space:
+
+Before network:
+messy distribution
+classes overlapping
+After layers:
+data is gradually reshaped
+becomes more separable
+🧠 Key idea
+
+Each layer performs:
+
+a geometric transformation of the data space
+
+Eventually:
+
+classes become linearly separable
+final layer becomes simple classifier/regressor
+🔥 Why this matters
+
+Deep learning is powerful because:
+
+it learns a sequence of transformations that reshape geometry into something simple
+
+🧩 Final summary
+Tensor operations:
+element-wise ops → local transformations
+broadcasting → shape alignment magic
+dot product → feature mixing (core of Dense layers)
+reshape → change structure view
+transpose → axis swapping
+Big idea:
+
+Neural networks =
+
+a chain of tensor operations that geometrically reshape data until it becomes easy to solve
+
+Neural networks:
+
+transform data through high-dimensional geometric operations
+progressively reshape representations
+
+Lecture analogy:
+
+deep learning “uncrumples” manifolds
+layers progressively separate complex data
+
+Tensor Representations
+Time-Series Data
+
+Time-series tensors are 3D:
+
+(samples, timesteps, features)
+
+Examples:
+
+stock prices
+tweets
+sequences
+
+Image Data
+
+Images are represented as 4D tensors.
+
+Channels-first:
+
+(samples, channels, height, width)
+
+Channels-last:
+
+(samples, height, width, channels)
+
+TensorFlow typically uses channels-last.
+
+Video Data
+
+Videos become 5D tensors:
+
+(samples, frames, height, width, channels)
+
+Example:
+
+(4, 240, 144, 256, 3)
+
+🧠 1. Geometric view of neural networks
+
+Neural networks don’t just “process numbers”:
+
+they transform the geometry of data in high-dimensional space
+
+🔷 Key idea
+
+Each layer:
+
+moves points
+bends space
+stretches or compresses regions
+separates patterns
+
+So instead of memorizing rules, the network:
+
+learns a sequence of geometric transformations
+
+🧩 “Uncrumpling manifolds” idea
+
+In deep learning, data often lies on a complex structure called a:
+
+manifold (a curved surface in high dimensions)
+
+The lecture analogy:
+
+deep learning “uncrumples” manifolds
+
+Intuition:
+
+Imagine:
+
+a crumpled paper = complex data distribution
+you slowly flatten it
+
+Each layer:
+
+reduces complexity
+makes classes more separable
+🎯 Final goal
+
+After many layers:
+
+classes become linearly separable
+
+So a simple classifier (like a linear layer) can solve the problem.
+
+🧮 2. Tensor representations of data
+
+Neural networks don’t just use vectors — they use structured tensors depending on data type.
+
+📊 3. Time-series data (3D tensors)
+
+Time-series data evolves over time.
+
+Shape:
+(samples,timesteps,features)
+📌 Examples
+📈 Stock prices
+time steps = days/minutes
+features = open, close, volume
+🧾 Text / sequences
+tweets
+sentences
+sensor readings
+🧠 Intuition
+
+Each sample is:
+
+a sequence of feature vectors over time
+
+So the model learns:
+
+temporal patterns
+dependencies across steps
+🖼️ 4. Image data (4D tensors)
+
+Images are structured spatial data.
+
+📌 Two formats
+🟦 Channels-last (most common in TensorFlow)
+(samples,height,width,channels)
+
+Example:
+
+RGB image → channels = 3
+🟩 Channels-first (common in PyTorch)
+(samples,channels,height,width)
+📌 Why channels matter
+
+Each channel represents:
+
+Red
+Green
+Blue
+
+Or in CNNs:
+
+learned feature maps
+🧠 Intuition
+
+An image is not just pixels:
+
+it is a structured 2D grid of vectors
+
+🎥 5. Video data (5D tensors)
+
+Videos add another dimension: time.
+
+📌 Shape:
+(samples,frames,height,width,channels)
+📌 Example
+(4,240,144,256,3)
+
+Meaning:
+
+4 videos
+240 frames each
+144 × 256 resolution
+3 color channels (RGB)
+🧠 Intuition
+
+A video is:
+
+a sequence of images over time
+
+So neural networks must learn:
+
+spatial structure (images)
+temporal structure (motion)
+🧠 6. Big unifying idea
+
+All data types are just different shaped tensors:
+
+Data type	Tensor shape	What it represents
+Tabular	(samples, features)	static values
+Time-series	(samples, timesteps, features)	sequences
+Images	(samples, H, W, C)	spatial structure
+Videos	(samples, frames, H, W, C)	space + time
+🔥 Core insight
+
+Deep learning works because:
+
+all data becomes tensors, and all learning becomes tensor transformations
+
+And neural networks:
+
+reshape data geometry
+progressively simplify structure
+make complex patterns linearly separable
+
+
+Lecture 4 — Convolutional Neural Networks (CNNs)
+Introduction to CNNs
+
+CNNs are among the most important Deep Learning architectures.
+
+Major applications:
+
+computer vision
+image recognition
+NLP
+recommender systems
+
+CNN growth:
+
+AlexNet (2012)
+ResNet (152 layers)
+
+Advantages of CNNs
+
+Main advantages:
+
+automatic feature extraction
+parameter sharing
+computational efficiency
+superhuman image classification accuracy
+
+CNNs learn features automatically from raw images.
+
+Biological Inspiration
+
+CNNs were inspired by the visual cortex.
+
+Key ideas:
+
+receptive fields
+hierarchical feature extraction
+neurons responding to local patterns
+
+Experiments:
+
+Hubel & Wiesel
+Nobel Prize 1981
+
+🧠 1. What are CNNs?
+
+A Convolutional Neural Network (CNN) is a type of neural network designed to work especially well with grid-like data, especially images.
+
+They are widely used in:
+
+computer vision
+image recognition
+NLP (in some cases)
+recommender systems
+
+They are a core part of modern Deep Learning.
+
+🚀 2. Why CNNs are important
+
+CNNs became a breakthrough because they solved a big problem:
+
+How do we process images without manually designing features?
+
+Before CNNs:
+
+humans had to design features (edges, textures, shapes)
+
+With CNNs:
+
+the model learns features automatically from raw pixels
+
+📈 3. CNN evolution (historical context)
+🔷 AlexNet (2012)
+first major deep CNN breakthrough
+won ImageNet competition
+proved deep learning works for vision
+🔷 ResNet (152 layers)
+introduced very deep networks
+solved vanishing gradient problem using skip connections
+made extremely deep models trainable
+⚙️ 4. Key advantages of CNNs
+🧠 1. Automatic feature extraction
+
+CNNs learn:
+
+edges
+textures
+shapes
+objects
+
+No manual feature engineering needed.
+
+👉 This is called:
+
+representation learning
+
+🔁 2. Parameter sharing
+
+Instead of learning separate weights for every pixel:
+
+the same filter is applied across the entire image
+
+✔ reduces parameters dramatically
+✔ improves generalization
+
+⚡ 3. Computational efficiency
+
+Because of:
+
+shared weights
+local connections
+
+CNNs are much faster than fully connected networks on images.
+
+🏆 4. High performance
+
+CNNs achieved:
+
+superhuman image classification accuracy
+dominance in vision tasks for years
+🧠 5. Biological inspiration
+
+CNNs are inspired by the human visual system.
+
+This comes from neuroscience research in:
+
+David Hubel
+Torsten Wiesel
+
+They studied how vision works in the brain.
+
+👁️ Key discoveries
+🔹 Receptive fields
+
+Neurons in the visual cortex respond only to:
+
+small local regions of the visual field
+
+This inspired CNN filters.
+
+🔹 Hierarchical feature extraction
+
+The brain processes vision in layers:
+
+simple edges
+shapes
+objects
+
+CNNs mimic this structure.
+
+🔹 Local pattern detection
+
+Neurons respond to:
+
+edges
+orientations
+small textures
+
+CNN filters do exactly the same.
+
+🏆 Nobel Prize
+
+Their work was recognized with the:
+
+1981 Nobel Prize in Physiology or Medicine
+🧠 6. CNN core idea (very important)
+
+CNNs assume:
+
+nearby pixels are more related than distant ones
+
+So instead of full connections:
+
+focus on local regions
+build features hierarchically
+🧩 7. Big intuition
+
+A CNN works like this:
+
+Step 1:
+
+Detect small patterns (edges)
+
+Step 2:
+
+Combine them into shapes
+
+Step 3:
+
+Combine shapes into objects
+
+🧠 Final idea:
+
+CNNs learn a hierarchy of visual features automatically
+
+🔥 Summary
+CNNs are powerful because:
+they learn features automatically
+they reuse parameters (filters)
+they exploit spatial structure
+they are inspired by the visual cortex
+
+
+CNN vs Fully Connected Networks
+
+Fully connected networks fail on large images because:
+
+parameter count explodes
+computational cost becomes enormous
+
+CNNs solve this through:
+
+local connectivity
+shared weights
+convolutions
+
+Convolution
+
+Convolution merges information between:
+
+input signal
+filter/kernel
+
+Used for:
+
+images
+audio
+time series
+
+1D convolution:
+
+sliding kernel over sequence
+
+2D convolution:
+
+sliding kernel over image
+
+3D convolution:
+
+includes RGB channels
+
+Feature Maps
+
+Each filter produces a feature map.
+
+Multiple filters:
+
+produce multiple feature maps
+stacked into output volume
+
+Example:
+
+Input: 32x32x3
+10 filters → output: 32x32x10
+
+Activation Functions in CNNs
+
+After convolution:
+
+activation functions applied
+usually ReLU
+
+CNNs remain nonlinear models.
+⚖️ 1. CNN vs Fully Connected Networks (FCN)
+🧠 Fully Connected Networks (MLPs)
+
+In a fully connected layer:
+
+every input connects to every neuron
+
+So for an image:
+
+Example: 32 × 32 × 3 image
+= 3072 input values
+
+If first hidden layer has 1000 neurons:
+
+3072×1000=3,072,000 parameters
+
+And that’s just one layer.
+
+❌ Why FCNs fail for images
+1. Parameter explosion
+images are large → weights explode
+2. No spatial awareness
+pixel relationships are ignored
+treats image as flat vector
+3. Poor scalability
+high memory + computation cost
+✅ CNN solution
+
+CNNs solve this using:
+
+🔹 Local connectivity
+neurons only see small regions
+🔹 Shared weights
+same filter applied everywhere
+🔹 Convolution operation
+efficient sliding pattern detector
+🔁 2. Convolution (core idea)
+
+Convolution is the operation that powers CNNs.
+
+It combines:
+
+input signal (image, audio, sequence)
+filter (kernel)
+🧠 Intuition
+
+A filter is like a pattern detector
+
+Example:
+
+edge detector
+texture detector
+shape detector
+📌 How convolution works
+
+You slide a small matrix (kernel) over the input:
+
+multiply element-wise
+sum results
+store output value
+
+This produces a new transformed signal.
+
+📊 3. Types of convolution
+🟦 1D Convolution
+
+Used for:
+
+time series
+audio
+text sequences
+
+Kernel slides along one dimension:
+
+(time steps)
+
+👉 detects patterns like:
+
+trends
+spikes
+rhythms
+🟩 2D Convolution
+
+Used for:
+
+images
+
+Kernel slides across:
+
+height
+width
+
+👉 detects:
+
+edges
+corners
+textures
+🟪 3D Convolution
+
+Used for:
+
+videos
+volumetric data
+RGB + spatial + temporal info
+
+Adds extra dimension:
+
+channels or time
+🧠 4. Feature Maps
+
+Each filter produces a:
+
+feature map
+
+This is the output after applying convolution.
+
+🔷 What a feature map represents
+
+A feature map shows:
+
+where a specific pattern appears in the input
+
+Example:
+
+bright areas = strong detection
+dark areas = weak detection
+📦 Multiple filters
+
+If you use multiple filters:
+
+each filter learns a different pattern
+each produces a separate feature map
+
+These are stacked together.
+
+📌 Example
+
+Input:
+
+32×32×3
+
+Apply:
+
+10 filters
+
+Output:
+
+32×32×10
+
+👉 same spatial size (in this case)
+👉 but now 10 learned feature channels
+
+🧠 5. Why CNNs are nonlinear
+
+After convolution:
+
+Step:
+
+Apply activation function (usually ReLU)
+
+ReLU(x)=max(0,x)
+🔥 Why this matters
+
+Without activation:
+
+network becomes just a linear function
+no deep learning power
+
+With ReLU:
+
+model learns complex patterns
+enables hierarchical feature learning
+🧩 6. Big intuition
+
+CNN pipeline:
+
+1. Convolution
+
+detect patterns
+
+2. Feature maps
+
+represent where patterns exist
+
+3. Activation (ReLU)
+
+introduce non-linearity
+
+4. Stack layers
+
+build higher-level features
+
+🧠 Final summary
+❌ Fully Connected Networks:
+flatten image
+huge parameter count
+ignore spatial structure
+✅ CNNs:
+use local connections
+reuse filters (shared weights)
+efficiently detect spatial patterns
+🔥 Core idea
+
+CNNs learn a hierarchy of spatial pattern detectors using convolution + feature maps
+
+If you want next, I can explain:
+
+
+Stride
+
+Stride determines filter movement.
+
+Effects:
+
+larger stride
+smaller feature maps
+less overlap
+
+Default stride:
+
+1
+
+Padding
+
+Padding preserves spatial dimensions.
+
+Without padding:
+
+feature maps shrink rapidly
+
+Padding also:
+
+protects edge information
+
+Types:
+
+full
+same
+valid
+
+Pooling Layers
+
+Pooling reduces dimensionality.
+
+Benefits:
+
+fewer parameters
+reduced overfitting
+translation invariance
+
+Most common:
+
+max pooling
+
+Typical setup:
+
+2x2 window
+stride 2
+🚶 1. Stride (how fast the filter moves)
+
+Stride controls how much the convolution window moves each step.
+
+📌 Intuition
+
+Think of sliding a magnifying glass over an image:
+
+stride = 1 → move 1 pixel at a time (slow, detailed scan)
+stride = 2 → jump 2 pixels (faster, less detail)
+📊 Effects of stride
+🔹 Larger stride:
+smaller output feature maps
+fewer computations
+less overlap between receptive fields
+🔹 Smaller stride (default = 1):
+more detailed feature maps
+more overlap
+higher computational cost
+🧠 Key idea
+
+stride controls the resolution of the output feature map
+
+🧱 2. Padding (controlling image size)
+
+Padding adds extra pixels around the input (usually zeros).
+
+📌 Why padding is needed
+
+Without padding:
+
+image shrinks after every convolution
+edge information gets lost quickly
+🧠 Intuition
+
+Padding is like:
+
+adding a border so the filter can “see” edges properly
+
+📊 Effects of padding
+❌ No padding (valid convolution)
+output gets smaller every layer
+edges are underused
+✅ With padding
+preserves spatial size
+keeps edge information
+🧩 Types of padding
+🔹 1. Valid padding
+no padding added
+output shrinks
+
+👉 most “strict” version
+
+🔹 2. Same padding
+output size ≈ input size
+pads just enough to preserve dimensions
+
+👉 most commonly used in deep CNNs
+
+🔹 3. Full padding
+adds extra border so output becomes larger
+less common in modern CNNs
+🧠 Key idea
+
+padding controls whether spatial dimensions shrink or stay stable
+
+📉 3. Pooling layers
+
+Pooling reduces spatial size while keeping important information.
+
+📌 Why pooling is used
+
+It helps:
+
+reduce computation
+prevent overfitting
+make model robust to small shifts
+🧠 Intuition
+
+Pooling is like:
+
+compressing an image while keeping the most important signals
+
+🔷 Most common: Max Pooling
+📌 How it works
+
+Take a window (e.g. 2×2) and keep only the maximum value.
+
+Example:
+
+[
+1
+2
+	​
+
+3
+4
+	​
+
+]⇒4
+📊 Typical setup
+window: 2 × 2
+stride: 2
+
+👉 halves width and height each time
+
+🧠 Why max pooling works
+
+It keeps:
+
+strongest activation (strongest feature detection)
+
+So if an edge exists anywhere in the region:
+
+max pooling preserves it
+
+🧠 Benefits of pooling
+🔹 1. Fewer parameters
+reduces feature map size
+lighter model
+🔹 2. Reduced overfitting
+removes fine noise details
+keeps only strong patterns
+🔹 3. Translation invariance
+object shifts slightly → still detected
+
+👉 very important in vision tasks
+
+🧩 Big picture of CNN flow
+
+A typical CNN block looks like:
+
+Convolution
+Padding controls size
+Activation (ReLU)
+Pooling reduces size
+
+Repeat many times.
+
+🔥 Final intuition
+Stride → how fast you scan
+Padding → whether you preserve edges and size
+Pooling → compress and keep strongest signals
+🧠 Core idea
+
+CNNs gradually reduce spatial resolution while increasing semantic meaning
+
+
+CNN Architecture
+
+Typical CNN pipeline:
+
+Input
+→ Convolution
+→ Activation
+→ Pooling
+→ Flatten
+→ Fully Connected Layers
+→ Output
+
+Two major parts:
+
+Feature extraction
+Classification
+
+Visualizing CNNs
+
+The lectures discuss:
+
+feature map visualization
+filter visualization
+class activation visualization
+
+Lower layers:
+
+edges
+textures
+
+Higher layers:
+
+semantic concepts
+object parts
+
+CNN Architectures
+LeNet-5
+
+Created by:
+
+Yann LeCun (1998)
+
+Used for:
+
+handwritten digit recognition
+
+VGGNet
+
+Characteristics:
+
+deep architecture
+many 3x3 filters
+simple repetitive structure
+
+Runner-up in ImageNet 2014.
+
+GoogLeNet / Inception
+
+Introduced:
+
+inception modules
+multi-scale convolutions
+
+Uses:
+
+1x1
+3x3
+5x5 filters together
+
+ResNet
+
+Key innovation:
+
+residual connections
+
+Allows:
+
+extremely deep networks
+stable training
+
+SENet
+
+SE blocks:
+
+recalibrate feature maps
+model channel relationships
+
+Improve feature importance weighting.
+🧱 1. CNN Architecture (general pipeline)
+
+A typical CNN is structured like this:
+
+Input
+→ Convolution
+→ Activation (ReLU)
+→ Pooling
+→ (repeat Conv blocks)
+→ Flatten
+→ Fully Connected layers
+→ Output
+🧠 Two main stages
+🔷 1. Feature extraction (CNN part)
+Convolution + ReLU + Pooling
+learns visual patterns
+
+👉 output: feature maps
+
+🔶 2. Classification (MLP part)
+Flatten feature maps
+Fully connected layers
+final prediction
+
+👉 output: class probabilities
+
+🔍 2. Visualizing CNNs
+
+CNNs are often called “black boxes”, but we can visualize what they learn.
+
+📊 1. Feature map visualization
+
+Shows:
+
+what each filter “detects”
+where patterns appear
+🎛️ 2. Filter visualization
+
+Shows:
+
+what kind of pattern a filter is looking for
+
+Example:
+
+edge detector
+texture detector
+🧠 3. Class activation maps (CAM)
+
+Shows:
+
+which parts of the image contributed to a prediction
+
+Example:
+
+dog detected → highlight dog region
+🧠 4. Hierarchical feature learning
+
+CNNs build features layer by layer:
+
+🔹 Lower layers
+edges
+corners
+simple textures
+🔸 Middle layers
+shapes
+patterns
+parts of objects
+🔺 Higher layers
+full objects
+semantic concepts
+🧠 Key idea
+
+CNNs learn from low-level visual primitives → high-level meaning
+
+🏗️ 5. Famous CNN Architectures
+
+These models show how CNNs evolved.
+
+🟡 LeNet-5 (1998)
+
+Created by:
+Yann LeCun
+
+📌 Purpose:
+handwritten digit recognition (MNIST)
+🧠 Structure:
+simple CNN
+convolution + pooling + fully connected
+💡 Importance:
+
+first successful deep learning CNN
+
+🔵 VGGNet
+
+Key idea:
+
+very deep networks
+simple design
+📌 Characteristics:
+uses only 3×3 convolutions
+stacked repeatedly
+no complex modules
+🏆 Achievement:
+runner-up in ImageNet 2014
+🧠 Intuition:
+
+depth + simplicity > complex tricks
+
+🟣 GoogLeNet (Inception)
+
+Introduced:
+
+Inception modules
+
+📌 Key idea:
+
+Use multiple filter sizes in parallel:
+
+1×1
+3×3
+5×5
+🧠 Why this helps:
+captures features at different scales
+more efficient than large kernels
+💡 Insight:
+
+objects can appear at different sizes → use multi-scale processing
+
+🔴 ResNet
+
+Key innovation:
+
+residual connections (skip connections)
+
+📌 Problem it solved:
+
+Very deep networks were hard to train:
+
+gradients vanish
+training becomes unstable
+🧠 Solution:
+
+Add shortcut connections:
+
+output=F(x)+x
+💡 Why it works:
+network learns “corrections” instead of full transformations
+gradients flow easily
+🏆 Impact:
+made networks with 100+ layers practical
+became foundation for modern deep learning
+🟢 SENet (Squeeze-and-Excitation Networks)
+
+Introduced:
+
+channel-wise attention mechanism
+
+📌 Key idea:
+
+Not all feature maps are equally important.
+
+So SENet:
+
+learns importance of each channel
+reweights feature maps dynamically
+🧠 Intuition:
+
+“which features matter most right now?”
+
+💡 Effect:
+improves accuracy
+adds lightweight attention mechanism
+🧩 6. Big picture evolution
+
+CNNs evolved like this:
+
+Model	Key idea
+LeNet	first CNN
+VGG	deeper + simple
+GoogLeNet	multi-scale features
+ResNet	skip connections
+SENet	channel attention
+🧠 Final intuition
+
+CNNs are:
+
+hierarchical feature extractors that progressively turn pixels into semantic understanding
+
+🔥 One-line summary
+Early layers: detect edges
+Middle layers: detect shapes
+Deep layers: detect objects
+Final layers: classify meaning
+
+
+
+Lecture 6 — Ensemble Learning & RNNs
+Ensemble Learning
+
+Core idea:
+
+combine predictors
+aggregate outputs
+improve performance
+
+Methods:
+
+voting
+bagging
+boosting
+stacking
+
+Voting Classifiers
+Hard Voting
+
+Choose majority class.
+
+Soft Voting
+
+Average probabilities.
+
+Soft voting:
+
+gives more weight to confident classifiers
+
+Ensembles can outperform individual models.
+
+Wisdom of the Crowd
+
+Weak learners can become strong collectively if:
+
+sufficiently diverse
+errors are uncorrelated
+
+This explains ensemble power.
+
+Recurrent Neural Networks (RNNs)
+
+RNNs process sequential data.
+
+Unlike feedforward networks:
+
+recurrent connections exist
+previous outputs influence future states
+
+Applications:
+
+text
+audio
+time series
+
+Recurrent Neurons
+
+At timestep t:
+
+input: x(t)
+previous output: y(t−1)
+
+Initial previous output:
+
+0
+
+Unrolling Through Time
+
+RNNs are often visualized by:
+
+duplicating the recurrent neuron along the time axis
+
+This helps understand temporal processing.
+
+RNN Weights
+
+RNNs contain:
+
+input weights Wx
+recurrent weights Wy
+
+Output computed using:
+
+current input
+previous hidden state
+
+Typical activations:
+
+tanh
+ReLU
+
+🌳 1. Ensemble Learning
+
+Ensemble learning means:
+
+instead of using one model, we combine many models to get a better one
+
+🧠 Core idea
+
+A single model can make mistakes.
+
+But:
+
+multiple models can “vote” and correct each other
+
+So performance improves.
+
+📦 Main methods
+🗳️ 1. Voting
+
+Used in classification.
+
+🔹 Hard voting
+
+Each model votes for a class:
+
+Example:
+
+model 1 → A
+model 2 → B
+model 3 → A
+
+👉 final answer = A (majority wins)
+
+🔹 Soft voting
+
+Instead of labels, use probabilities:
+
+Example:
+
+Model	A	B
+M1	0.7	0.3
+M2	0.6	0.4
+M3	0.9	0.1
+
+Average:
+
+A = 0.73
+B = 0.26
+
+👉 final prediction = A
+
+🧠 Why soft voting is better
+
+Because:
+
+it uses confidence
+strong models influence more
+smoother decision making
+🌲 2. Bagging
+
+👉 Train models independently on random subsets of data
+
+reduces variance
+stabilizes predictions
+
+Example:
+
+Random Forest
+🚀 3. Boosting
+
+👉 Models are trained sequentially
+
+Each model:
+
+fixes errors of previous ones
+
+Examples:
+
+AdaBoost
+XGBoost
+🧩 4. Stacking
+
+👉 Combine multiple models using a “meta-model”
+
+Flow:
+
+base models make predictions
+meta-model learns how to combine them
+🧠 Wisdom of the Crowd
+
+This is the theoretical foundation:
+
+many weak learners together can form a strong learner
+
+BUT only if:
+
+✔ diversity
+
+models must be different
+
+✔ uncorrelated errors
+
+they should not fail in the same way
+
+💡 Key intuition
+
+If everyone makes different mistakes:
+
+majority vote cancels errors
+
+🔁 2. Recurrent Neural Networks (RNNs)
+
+Now we move to sequence learning.
+
+🧠 Core idea
+
+RNNs are designed for:
+
+data where order matters
+
+Examples:
+
+text
+speech
+time series
+🔄 3. What makes RNNs special?
+
+Unlike feedforward networks:
+
+❌ normal NN:
+input independent
+no memory
+✅ RNN:
+has memory
+previous output affects next step
+🧠 Key concept
+
+At each time step:
+
+input: x(t)
+memory: h(t−1)
+output: h(t)
+
+So:
+
+the network remembers the past
+
+🔁 4. Recurrent neuron behavior
+
+At time t:
+
+h
+t
+	​
+
+=f(W
+x
+	​
+
+x
+t
+	​
+
++W
+h
+	​
+
+h
+t−1
+	​
+
+)
+
+Where:
+
+W
+x
+	​
+
+ = input weights
+W
+h
+	​
+
+ = recurrent weights
+🧠 Intuition
+
+Each step:
+
+reads new input
+mixes it with memory
+produces updated state
+🟦 Initial state
+
+At t = 0:
+
+h
+0
+	​
+
+=0
+
+(no memory yet)
+
+⏳ 5. Unrolling Through Time
+
+RNNs are often visualized by “unrolling”:
+
+Instead of one looped neuron:
+
+we draw one copy per timestep
+
+Example:
+
+x1 → h1 → h2 → h3 → h4
+        ↑    ↑    ↑
+      memory flows forward
+🧠 Why unrolling helps
+
+It shows:
+
+how information flows through time
+how gradients are computed (backprop through time)
+⚙️ 6. RNN Weights
+
+RNNs use two main weight sets:
+
+🔹 Input weights (Wx)
+process current input
+🔹 Recurrent weights (Wh / Wy)
+process previous hidden state
+🧠 Key idea
+
+Same weights are reused at every time step:
+
+parameter sharing across time
+
+🔥 7. Activation functions in RNNs
+
+Common choices:
+
+🔹 tanh
+most traditional
+keeps values bounded (-1, 1)
+🔹 ReLU
+sometimes used
+but can cause instability
+🧠 Final intuition
+🌳 Ensembles:
+
+combine multiple models to reduce errors
+
+🔁 RNNs:
+
+one model with memory across time
+
+🧩 One-line summary
+Ensembles = many models voting together
+RNNs = one model remembering past inputs

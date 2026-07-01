@@ -1,0 +1,15 @@
+{
+  "id": "9af15469-f619-42b9-952b-4530664611b2",
+  "title": "what is cnn",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is cnn"
+    },
+    {
+      "role": "assistant",
+      "content": "I could not find the answer in the study materials. The provided context does not contain information about Convolutional Neural Networks (CNNs)."
+    }
+  ],
+  "student_memory": {}
+}

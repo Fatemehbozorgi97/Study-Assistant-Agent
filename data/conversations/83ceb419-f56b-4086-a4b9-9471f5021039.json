@@ -1,0 +1,23 @@
+{
+  "id": "83ceb419-f56b-4086-a4b9-9471f5021039",
+  "title": "hi",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    },
+    {
+      "role": "user",
+      "content": "what is the course na,e "
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    }
+  ],
+  "student_memory": {}
+}

@@ -1,0 +1,359 @@
+[
+  {
+    "id": "l1-1",
+    "question": "What is the bias-variance tradeoff?",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      1
+    ],
+    "predicted_lectures": [
+      1
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": true,
+    "critic_passed": false,
+    "latency_sec": 11.85,
+    "answer": "Based on the provided lecture materials excerpt about Tensorflow Playground exercises and transitioning from basic to advanced machine learning topics at the University of Bologna, I could not find information directly related to the bias-variance tradeoff. The context focuses on practical exercises using TensorFlow Playground, suggesting students explore different model parameters and architectures to gain an intuitive understanding of neural networks through visualization. It also discusses transitioning from basic to advanced machine learning content, but does not go into details about specific concepts like the bias-variance tradeoff.\n\nTo provide a more comprehensive answer involving the bias-variance tradeoff, additional context or references beyond what is provided in this excerpt would be needed. The lecture materials seem to emphasize hands-on experience and experimentation with different model configurations rather than delving into theoretical aspects of machine learning model selection and performance optimization at this stage."
+  },
+  {
+    "id": "l1-2",
+    "question": "Explain logistic regression.",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      1
+    ],
+    "predicted_lectures": [
+      1
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": true,
+    "critic_passed": false,
+    "latency_sec": 3.71,
+    "answer": "I could not find logistic regression specifically mentioned among the topics covered in the provided lecture material. The topics listed include Decision Trees, Ensemble Learning, SVM, CNN, RNN, LSTM, Transformers, LLMs, MLOps, XAI, and Quantum ML, but logistic regression is not included in this list.\n\nSince the lecture materials do not cover logistic regression directly, I do not have any information about whether it will be discussed in this course based solely on what you provided. You may want to check with your instructor or refer to other course materials if you need more details about how logistic regression fits into this curriculum."
+  },
+  {
+    "id": "l1-3",
+    "question": "Give me a quiz on linear regression.",
+    "expected_mode": "quiz",
+    "predicted_mode": "quiz",
+    "mode_correct": true,
+    "expected_lectures": [
+      1
+    ],
+    "predicted_lectures": [
+      1,
+      2
+    ],
+    "lecture_correct": true,
+    "keyword_hit": null,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 2.94,
+    "answer": "\ud83e\uddea Quiz Time:\n\n1. After training a linear regression model using scikit-learn's LinearRegression class and evaluating it, the expected accuracy for generalization to previously unseen samples is around:\n   - A. 70%\n   - B. 85%\n   - C. 90%\n   - D. 95%\n\n2. In the context of linear regression, what does adding an extra 'bias unit' or 'bias neuron' with a constant value (e.g., x0=1) help to model?\n   - A. Allows the model to learn more complex patterns\n   - B. Helps to account for the intercept in the linear relationship between features and target variable\n   - C. Reduces the chances of overfitting by introducing a regularization term\n   - D. Enables the model to handle non-linear relationships through polynomial features\n\n3. When tuning hyperparameters for a linear regression model, which of the following is NOT typically adjusted:\n   - A. Learning rate\n   - B. Number of hidden layers in the neural network architecture\n   - C. Regularization strength (e.g., L1, L2 regularization)\n   - D. Features used to train the model\n\n"
+  },
+  {
+    "id": "l2-1",
+    "question": "How does forward propagation work in a neural network?",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      2
+    ],
+    "predicted_lectures": [
+      2
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": true,
+    "critic_passed": true,
+    "latency_sec": 2.58,
+    "answer": "Based on the provided lecture context, I could not find specific information about how forward propagation works in a neural network. The context discusses some general concepts related to neural networks and machine learning, but it does not go into details about the forward propagation process itself. \n\nIf you need more information on this topic, I recommend referring to other relevant resources or asking during the next lecture for clarification."
+  },
+  {
+    "id": "l2-2",
+    "question": "Summarize lecture 2 on neural network representations.",
+    "expected_mode": "summarize",
+    "predicted_mode": "summarize",
+    "mode_correct": true,
+    "expected_lectures": [
+      2
+    ],
+    "predicted_lectures": [
+      2
+    ],
+    "lecture_correct": true,
+    "keyword_hit": null,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 3.19,
+    "answer": "Lecture 2 focused on neural network representations, introducing key concepts and terminology. The main points covered include:\n\n1. Addition of an extra node (x0 or bias unit) with a constant value of 1.\n2. Use of sigmoid or logistic activation function for artificial neurons.\n3. Referring to the \u03b8 parameters as weights (w).\n4. Visual representation and understanding of these concepts.\n\nThe lecture also discussed the accuracy expected from this model, around 96%, and suggested that further improvements might be achieved by designing more complex neural networks. It compared this to scoring in scikit-learn, which outputs a tuple with various score metrics. \n\nFinally, the importance of using shuffled data for training and testing was emphasized, along with discussing the potential instabilities and limitations of decision trees (DTs) and how Random Forests can help mitigate these issues."
+  },
+  {
+    "id": "l3-1",
+    "question": "Explain backpropagation in an MLP.",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      3
+    ],
+    "predicted_lectures": [
+      3
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 4.28,
+    "answer": "Backpropagation is a method used to efficiently compute the gradients of the loss function with respect to the weights and biases of a neural network, especially in the context of training multi-layer perceptrons (MLPs). The process involves traversing the network in reverse order, starting from the output layer and moving towards the input layer. This reverse mode of computation is facilitated by automatic differentiation tools.\n\nThe core idea behind backpropagation is to use the chain rule to compute how much each weight contributes to the overall loss. It begins with calculating the partial derivatives of the loss function with respect to the activations in the output layer. Then, it moves backward through the network layers, applying the chain rule at each step to determine how changes in weights affect the activations and subsequently the loss.\n\nFor instance, if a certain weight change leads to an increase in activation in one neuron, which then results in a larger output from that layer, and ultimately a higher loss value, backpropagation calculates these successive contributions. It updates the weights accordingly using gradient descent or its variants until the network converges towards minimizing the loss function on the given dataset.\n\nThis method is crucial for training neural networks because it allows for efficient computation of gradients in deep architectures with many layers and parameters, enabling complex models to be trained effectively."
+  },
+  {
+    "id": "l3-2",
+    "question": "What is gradient descent used for?",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      3
+    ],
+    "predicted_lectures": [
+      2,
+      3
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 2.65,
+    "answer": "Based on the provided lecture context, gradient descent is a method used to update weights in a neural network model to minimize the loss function. The context describes a naive approach of manually updating each coefficient by repeating forward passes with different values, which is inefficient. A better approach mentioned is using the fact that all operations in the NN are differentiable, allowing for the use of gradient descent to efficiently calculate and update weights based on the gradient of the loss function."
+  },
+  {
+    "id": "l3-3",
+    "question": "Quiz me on gradient descent.",
+    "expected_mode": "quiz",
+    "predicted_mode": "quiz",
+    "mode_correct": true,
+    "expected_lectures": [
+      3
+    ],
+    "predicted_lectures": [
+      1,
+      3
+    ],
+    "lecture_correct": true,
+    "keyword_hit": null,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 1.98,
+    "answer": "\ud83e\uddea Quiz Time:\n\n1. What is the main advantage of using backpropagation (BP) over direct computation for performing gradient descent updates in a neural network?\n   - A. It allows parallel updates of weights, making it much faster\n   - B. It uses reverse-mode automatic differentiation to efficiently compute gradients\n   - C. It eliminates the need for multiple forward passes through the network per update\n   - D. It automatically finds the optimal learning rate for each weight\n\n"
+  },
+  {
+    "id": "l4-1",
+    "question": "What does a convolution operation do in a CNN?",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      4
+    ],
+    "predicted_lectures": [
+      4
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 3.29,
+    "answer": "In a Convolutional Neural Network (CNN), a convolution operation applies a set of learnable filters (kernels) to the input data. These filters slide over the input, performing element-wise multiplications between the filter values and the corresponding input values within its receptive field. The result is a feature map that captures specific patterns or features present in the input.\n\nThe key aspects of a convolution operation in a CNN are:\n\n1. Receptive Field: Each position in the output feature map corresponds to a region in the input data defined by the size and stride of the filter.\n\n2. Learnable Filters: The filters' weights are learned during training, allowing the network to automatically discover relevant features from the input data.\n\n3. Feature Extraction: By applying multiple convolutional layers, the CNN can learn hierarchical representations of the input data, extracting more complex and abstract features at deeper levels.\n\n4. Dimensionality Reduction: Convolution operations often involve striding (skipping inputs) and pooling (max, average, or min), which help reduce the spatial dimensions of the feature maps while maintaining important information about the presence and location of features."
+  },
+  {
+    "id": "l4-2",
+    "question": "Explain pooling layers and feature maps in CNNs.",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      4
+    ],
+    "predicted_lectures": [
+      4
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 4.8,
+    "answer": "Certainly! In Convolutional Neural Networks (CNNs), pooling layers and feature maps play crucial roles in reducing the spatial dimensions of the input, enabling the network to capture important features while also providing translation invariance.\n\nFeature Maps:\n- Feature maps are the output of applying a convolutional filter to the previous layer's input.\n- Each feature map highlights a specific aspect or feature of the image at different depths (thickness).\n- By using multiple filters with different weights, the CNN can detect various features like edges, corners, and textures within an image.\n\nPooling Layers:\n- Pooling layers are used after one or more convolutional layers to reduce the spatial dimensions (height and width) of the feature maps.\n- There are two main types of pooling: max pooling and average pooling.\n- Max pooling selects the maximum value within a defined window size in each feature map, while average pooling calculates the average of all values within the window.\n- Pooling helps to:\n  - Reduce computation by decreasing the number of parameters and calculations.\n  - Provide translation invariance, meaning that small shifts or distortions in the input don't significantly affect the output.\n  - Downsample the feature maps, allowing the network to capture more complex features with deeper layers.\n\nIn summary, pooling layers work alongside convolutional filters to process the image data efficiently by reducing dimensions and providing invariance. This enables CNNs to learn increasingly abstract and complex features while maintaining a manageable number of parameters."
+  },
+  {
+    "id": "l6-1",
+    "question": "How does an LSTM handle sequence modeling?",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [
+      6
+    ],
+    "predicted_lectures": [
+      6
+    ],
+    "lecture_correct": true,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": true,
+    "critic_passed": true,
+    "latency_sec": 2.48,
+    "answer": "Based on the lecture context provided, I could not find specific information about how LSTM (Long Short-Term Memory) networks handle sequence modeling. The context mentions Encoder-Decoder architecture for seq-2-seq models and its advantage over single sequence-to-sequence RNN in translations, but it does not go into details about LSTMs specifically."
+  },
+  {
+    "id": "l6-2",
+    "question": "Summarize the RNN lecture.",
+    "expected_mode": "summarize",
+    "predicted_mode": "summarize",
+    "mode_correct": true,
+    "expected_lectures": [
+      6
+    ],
+    "predicted_lectures": [
+      6
+    ],
+    "lecture_correct": true,
+    "keyword_hit": null,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 3.61,
+    "answer": "The main points covered in this lecture on RNN are:\n\n1. XGBoost hyperparameters: Many options are available for tuning XGBoost models, but it's essential to limit them initially to avoid overfitting. Key parameters include n_estimators (number of trees), max_depth (tree depth), learning rate, and regularization terms reg_alpha and reg_lambda.\n\n2. Boosting advantages and limitations: Boosting can achieve high performance and generalization but is a sequential technique, limiting parallelization and scalability compared to bagging or pasting methods.\n\n3. Example disclaimer: The examples used in this lecture are more synthetic and educational than based on real-world applications, designed to be explanatory but limited.\n\n4. Learning rate hyperparameter: Adjusting the learning rate influences the contribution of each tree in the ensemble. A lower value may require more trees to fit the training set but often results in better generalization.\n\n5. Encoder-Decoder architecture: This two-step model is recommended for sequence-to-sequence tasks, as it allows the encoder to process the entire input sequence before passing the encoded representation to the decoder for translation."
+  },
+  {
+    "id": "oos-1",
+    "question": "Explain how the attention mechanism in transformers works.",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [],
+    "lecture_correct": null,
+    "keyword_hit": null,
+    "out_of_scope": true,
+    "refused": true,
+    "critic_passed": false,
+    "latency_sec": 3.41,
+    "answer": "Based on the provided lecture material snippets, I could not find information about attention mechanisms or transformers. The context does not contain details on these specific models or techniques. Therefore, I do not have enough information to provide a detailed explanation of how they work based solely on what is given here. For accurate and relevant information, I recommend consulting textbooks, research papers, or official documentation that specifically cover deep learning architectures like attention and transformers."
+  },
+  {
+    "id": "oos-2",
+    "question": "What is a support vector machine and how does the kernel trick work?",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [],
+    "lecture_correct": null,
+    "keyword_hit": null,
+    "out_of_scope": true,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 6.37,
+    "answer": "A Support Vector Machine (SVM) is a powerful classification algorithm that finds the maximum-margin hyperplane to separate different classes in a feature space. The goal of SVM is to find the hyperplane which has the largest distance to the nearest training data points of any class, i.e., the margin is maximized.\n\nThe decision function for an SVM with a linear kernel can be written as:\n\n$$f(x) = \\sum_{i=1}^{n} y_i \\alpha_i \\langle x, x_i \\rangle + b$$\n\nwhere:\n- $x$ is the input vector\n- $y_i \\in \\{-1, 1\\}$ are the class labels of the training data points\n- $\\alpha_i$ are the dual coefficients\n- $b$ is the bias term\n\nThe kernel trick allows us to operate in a higher-dimensional feature space without explicitly computing the coordinates. A kernel function takes the input vectors as parameters and returns an inner product in the new space.\n\nSome common kernels include:\n1. Linear: $K(x, x_i) = \\langle x, x_i \\rangle$\n2. Polynomial: $K(x, x_i) = (\\langle x, x_i \\rangle + 1)^d$, where $d$ is the degree\n3. Radial Basis Function (RBF)/Gaussian: $K(x, x_i) = \\exp(-\\frac{||x-x_i||^2}{2\\sigma^2})$\n\nThe kernel trick works by implicitly mapping the input data to a higher-dimensional space where it becomes linearly separable. In this new space, an optimal hyperplane is found using the same decision function as before.\n\nFor example, with the RBF kernel, we do not need to compute the inner product in a high-dimensional space but rather apply the Gaussian function directly in our feature space:\n\n$$K(x, x_i) = \\exp\\left(-\\frac{||x-x_i||^2}{2\\sigma^2}\\right)$$\n\nBy using these kernel functions, we can effectively transform non-linear problems into linear ones while avoiding the computational complexity of explicitly mapping the data to a high-dimensional feature space.\n\nThe kernel trick greatly simplifies the process and is the key idea behind SVMs that allows them to work well with non-linearly separable data."
+  },
+  {
+    "id": "oos-3",
+    "question": "Explain how reinforcement learning with Q-learning works.",
+    "expected_mode": "explain",
+    "predicted_mode": "explain",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [
+      3
+    ],
+    "lecture_correct": null,
+    "keyword_hit": null,
+    "out_of_scope": true,
+    "refused": true,
+    "critic_passed": false,
+    "latency_sec": 3.24,
+    "answer": "Based on the provided context from the lecture materials, I could not find information specifically discussing Q-learning. The focus appears to be on backpropagation and training neural networks, rather than reinforcement learning techniques like Q-learning.\n\nI have not found relevant content in the given material to address your query about Q-learning directly."
+  },
+  {
+    "id": "oos-4",
+    "question": "What did the professor say about the final exam date?",
+    "expected_mode": "course_info",
+    "predicted_mode": "course_info",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [],
+    "lecture_correct": null,
+    "keyword_hit": null,
+    "out_of_scope": true,
+    "refused": true,
+    "critic_passed": true,
+    "latency_sec": 1.99,
+    "answer": "The information provided in the official course information JSON does not include details about the final exam date or other practical aspects like office hours. The JSON contains only general course data such as code, name, language, credits, teachers, and topics covered in the Applied Machine Learning course at the University of Bologna for the 2025/2026 academic year. Therefore, I do not have specific information about the final exam date or other practical details directly from the professor."
+  },
+  {
+    "id": "greet-1",
+    "question": "Hey, how's it going?",
+    "expected_mode": "greeting",
+    "predicted_mode": "greeting",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [],
+    "lecture_correct": null,
+    "keyword_hit": null,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 1.04,
+    "answer": "Hello! It's great to meet you. As your friendly AI Study Assistant for the Applied Machine Learning course at the University of Bologna, I'm here to help with explanations, quizzes, and summaries from our lecture materials. Feel free to ask any questions, and let's work together to enhance your learning experience!"
+  },
+  {
+    "id": "course-1",
+    "question": "What is this course about?",
+    "expected_mode": "course_info",
+    "predicted_mode": "course_info",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [],
+    "lecture_correct": null,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 1.92,
+    "answer": "This course, \"Applied Machine Learning\" with the code B5779, offered at the University of Bologna during the 2025/2026 academic year, is taught in English. It covers a total of 10 credits and is instructed by Daniele Bonacorsi and Luca Clissa.\n\nThe topics covered in this Applied Machine Learning course include Decision Trees, Ensemble Learning, SVM (Support Vector Machines), CNNs (Convolutional Neural Networks), RNNs (Recurrent Neural Networks), LSTMs (Long Short-Term Memory networks), Transformers, LLMs (Large Language Models), MLOps (Machine Learning Operations), XAI (Explainable Artificial Intelligence), and Quantum Machine Learning."
+  },
+  {
+    "id": "course-2",
+    "question": "How many credits is this course worth and who teaches it?",
+    "expected_mode": "course_info",
+    "predicted_mode": "course_info",
+    "mode_correct": true,
+    "expected_lectures": [],
+    "predicted_lectures": [],
+    "lecture_correct": null,
+    "keyword_hit": true,
+    "out_of_scope": false,
+    "refused": false,
+    "critic_passed": true,
+    "latency_sec": 1.64,
+    "answer": "This course, \"Applied Machine Learning\", has a total of 10 credits. It is taught by Daniele Bonacorsi and Luca Clissa at the University of Bologna during the 2025/2026 academic year."
+  }
+]

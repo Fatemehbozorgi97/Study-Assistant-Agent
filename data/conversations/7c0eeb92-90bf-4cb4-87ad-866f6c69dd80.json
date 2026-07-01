@@ -1,0 +1,23 @@
+{
+  "id": "7c0eeb92-90bf-4cb4-87ad-866f6c69dd80",
+  "title": "hi",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm your AI tutor. How can I assist you today? If you're looking for information on machine learning algorithms or need help with any related topics, I'll be happy to provide explanations, examples, and resources. Just let me know what you're interested in learning about."
+    },
+    {
+      "role": "user",
+      "content": "what is the course name and the tutors?"
+    },
+    {
+      "role": "assistant",
+      "content": "Based on the information provided, the course name is \"CourseAMLAdv2526\" and the lecturer is Luca Clissa from the University of Bologna. The course materials are available on Virtuale. The lecturer's office hours are Tuesdays, 4-6 pm, and appointments can be booked via this link: https://calendly.com/luca-clissa/office-hours. The contact email for the lecturer is luca.clissa2@unibo.it."
+    }
+  ],
+  "student_memory": {}
+}

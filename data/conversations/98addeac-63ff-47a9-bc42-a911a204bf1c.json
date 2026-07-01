@@ -1,0 +1,15 @@
+{
+  "id": "98addeac-63ff-47a9-bc42-a911a204bf1c",
+  "title": "hello",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! I'm your AI tutor. How can I help you learn about machine learning today? I'm knowledgeable in a wide range of topics, from fundamentals to cutting-edge techniques. Just let me know what you'd like to explore and I'll do my best to provide clear explanations, key equations, algorithm pseudocode, diagrams, and worked examples to help you understand the material thoroughly. I'm also happy to answer any questions you may have along the way. Let's get started!"
+    }
+  ],
+  "student_memory": {}
+}

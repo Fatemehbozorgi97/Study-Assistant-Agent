@@ -1,0 +1,15 @@
+{
+  "id": "b6d91098-64f2-468e-83be-43ba8f643168",
+  "title": "give me a set of questions about KNN",
+  "messages": [
+    {
+      "role": "user",
+      "content": "give me a set of questions about KNN"
+    },
+    {
+      "role": "assistant",
+      "content": "{\n  \"questions\": [\n    {\n      \"q\": \"The K in KNN stands for what?\",\n      \"options\": [\n        \"Kernel\",\n        \"Neighbors\",\n        \"Classes\",\n        \"Distance\"\n      ],\n      \"answer\": \"Neighbors\"\n    },\n    {\n      \"q\": \"How does the value of k affect the performance of a KNN classifier?\",\n      \"options\": [\n        \"Increasing k reduces overfitting but increases bias\",\n        \"Decreasing k reduces variance but increases bias\",\n        \"There is no relationship between k and bias/variance tradeoff\",\n        \"k only affects computation time, not model performance\"\n      ],\n      \"answer\": \"Increasing k reduces overfitting but increases bias\"\n    },\n    {\n      \"q\": \"KNN is classified as a:\",\n      \"options\": [\n        \"Supervised learning algorithm\",\n        \"Unsupervised learning algorithm\",\n        \"Semi-supervised learning algorithm\",\n        \"Reinforcement learning algorithm\"\n      ],\n      \"answer\": \"Supervised learning algorithm\"\n    },\n    {\n      \"q\": \"What is the main disadvantage of using KNN for large datasets?\",\n      \"options\": [\n        \"High computational cost\",\n        \"Poor generalization to unseen data\",\n        \"Difficulty in choosing the optimal value of k\",\n        \"Prone to overfitting\"\n      ],\n      \"answer\": \"High computational cost\"\n    }\n  ]\n}"
+    }
+  ],
+  "student_memory": {}
+}

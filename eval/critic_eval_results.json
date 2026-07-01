@@ -1,0 +1,74 @@
+[
+  {
+    "id": "c1",
+    "gold_grounded": true,
+    "predicted_grounded": true,
+    "correct": true
+  },
+  {
+    "id": "c2",
+    "gold_grounded": false,
+    "predicted_grounded": false,
+    "correct": true
+  },
+  {
+    "id": "c3",
+    "gold_grounded": true,
+    "predicted_grounded": true,
+    "correct": true
+  },
+  {
+    "id": "c4",
+    "gold_grounded": false,
+    "predicted_grounded": false,
+    "correct": true
+  },
+  {
+    "id": "c5",
+    "gold_grounded": true,
+    "predicted_grounded": true,
+    "correct": true
+  },
+  {
+    "id": "c6",
+    "gold_grounded": false,
+    "predicted_grounded": false,
+    "correct": true
+  },
+  {
+    "id": "c7",
+    "gold_grounded": true,
+    "predicted_grounded": true,
+    "correct": true
+  },
+  {
+    "id": "c8",
+    "gold_grounded": false,
+    "predicted_grounded": false,
+    "correct": true
+  },
+  {
+    "id": "c9",
+    "gold_grounded": true,
+    "predicted_grounded": true,
+    "correct": true
+  },
+  {
+    "id": "c10",
+    "gold_grounded": false,
+    "predicted_grounded": false,
+    "correct": true
+  },
+  {
+    "id": "c11",
+    "gold_grounded": true,
+    "predicted_grounded": true,
+    "correct": true
+  },
+  {
+    "id": "c12",
+    "gold_grounded": false,
+    "predicted_grounded": false,
+    "correct": true
+  }
+]

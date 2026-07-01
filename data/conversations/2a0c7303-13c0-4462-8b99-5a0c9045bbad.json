@@ -1,0 +1,23 @@
+{
+  "id": "2a0c7303-13c0-4462-8b99-5a0c9045bbad",
+  "title": "what is knn",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is knn"
+    },
+    {
+      "role": "assistant",
+      "content": "I could not find the answer in the study materials. The provided context does not contain information about KNN (K-Nearest Neighbors)."
+    },
+    {
+      "role": "user",
+      "content": "what is cnn?"
+    },
+    {
+      "role": "assistant",
+      "content": "I could not find the answer in the study materials. The provided context does not contain information about CNN (Convolutional Neural Network)."
+    }
+  ],
+  "student_memory": {}
+}

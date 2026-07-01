@@ -1,0 +1,23 @@
+{
+  "id": "3c8e9d74-2b56-4413-b21c-2d9226eb40a4",
+  "title": "what is cnn?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is cnn?"
+    },
+    {
+      "role": "assistant",
+      "content": "A CNN, or Convolutional Neural Network, is a type of deep learning model used primarily for image classification and processing tasks. It is designed to take advantage of the 2D structure of input data (such as images) and can learn spatial hierarchies of features on its own. CNNs use a convolutional layer that convolves kernels over input and detect features like edges, textures in the input. The architecture includes convolutional layers, pooling layers, and fully connected layers. CNNs are known for their effectiveness in computer vision tasks and have a much lower number of parameters than fully connected neural networks, which makes them much less prone to overfitting on small datasets."
+    },
+    {
+      "role": "user",
+      "content": "can you make it short?"
+    },
+    {
+      "role": "assistant",
+      "content": "Sure, here's a shortened version:\n\nCOURSE INFORMATION:\nProfessors: Daniele Bonacorsi (Module 1 & 2), Luca Clissa (Module 3)\nTopics: Classical ML (Decision Trees, Ensemble Learning, SVM), Deep Learning (Neural Networks, CNN, RNN, Transformers)\n\nLECTURE MATERIAL:\n- Decision Tree: Beginner, splits data, fast to train\n- SVM: Intermediate, maximum-margin hyperplane, hinge-loss training  \n- Gaussian Process: Advanced, Bayesian nonparametric regressor/classifier\n\nScope covers fundamentals to DL. Assumes basic math and programming. Each model explained deeply for implementation/use. \n\nLet me know if you have any other questions!"
+    }
+  ],
+  "student_memory": {}
+}

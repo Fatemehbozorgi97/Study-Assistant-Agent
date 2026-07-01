@@ -1,0 +1,15 @@
+{
+  "id": "07f3974e-9a56-42fa-937d-e6d3644e5380",
+  "title": "hi",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    }
+  ],
+  "student_memory": {}
+}
