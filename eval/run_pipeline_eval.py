@@ -11,7 +11,7 @@ and checks:
   - critic_passed rate and latency
 
 This is a lexical/behavioural proxy, not a substitute for human grading of
-answer quality -- see REPORT.md Sec. 9 for that caveat.
+answer quality -- see REPORT.md Sec. 7 for that caveat.
 """
 import json
 import sys
